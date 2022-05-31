@@ -1,4 +1,4 @@
-﻿namespace Metcom.XMLSummer.WindowsForms.Presentation.Common
+﻿namespace Metcom.XMLSummator.WindowsForms.Presentation.Common
 {
     public class ApplicationController : IApplicationController
     {

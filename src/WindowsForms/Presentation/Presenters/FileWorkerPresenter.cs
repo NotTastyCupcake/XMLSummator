@@ -1,13 +1,13 @@
 ﻿using Metcom.XMLSummator.ApplicationCore.Interfaces;
-using Metcom.XMLSummer.WindowsForms.Presentation.Common;
-using Metcom.XMLSummer.WindowsForms.Presentation.Views;
+using Metcom.XMLSummator.WindowsForms.Presentation.Common;
+using Metcom.XMLSummator.WindowsForms.Presentation.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metcom.XMLSummer.WindowsForms.Presentation.Presenters
+namespace Metcom.XMLSummator.WindowsForms.Presentation.Presenters
 {
     public class FileWorkerPresenter : BasePresenter<IFilesWorkerView>
     {

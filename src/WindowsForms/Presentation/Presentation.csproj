@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Common\ApplicationController.cs" />
     <Compile Include="Common\BasePresener.cs" />
     <Compile Include="Common\IApplicationController.cs" />

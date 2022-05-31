@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace Metcom.XMLSummer.WindowsForms.Presentation.Common
+namespace Metcom.XMLSummator.WindowsForms.Presentation.Common
 {
     public interface IContainer
     {

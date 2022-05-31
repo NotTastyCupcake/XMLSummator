@@ -1,4 +1,5 @@
 ﻿using Metcom.XMLSummator.ApplicationCore.Entities;
+using Metcom.XMLSummator.ApplicationCore.Extensions;
 using Metcom.XMLSummator.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,8 @@ namespace Metcom.XMLSummator.ApplicationCore.Services
 {
     public class FileWorkerService : IFileWorkerService
     {
-        private IValidatorFile _validatorFile;
-        private IAmountBalances _amountBalances;
-
-        public FileWorkerService(IValidatorFile validatorFile, IAmountBalances amountBalances)
-        {
-            _amountBalances = amountBalances;
-            _validatorFile = validatorFile;
-        }
+        private IValidatorFile _validatorFile = new ValidatorFile();
+        private IAmountBalances _amountBalances = new AmountBalance();
 
         public void CreataAmountFiles(string firstFileName, string secondFileName)
         {
