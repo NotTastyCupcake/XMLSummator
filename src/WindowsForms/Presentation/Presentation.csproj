@@ -53,7 +53,7 @@
     <Compile Include="Views\IFilesWorkerView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ApplicationCore\ApplicationCore.csproj">
+    <ProjectReference Include="..\..\ApplicationCore\ApplicationCore.csproj">
       <Project>{EE9829EF-552D-4931-BDA2-95A62D6746E6}</Project>
       <Name>ApplicationCore</Name>
     </ProjectReference>
