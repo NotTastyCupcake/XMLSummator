@@ -7,12 +7,12 @@ using System.Xml;
 
 namespace Metcom.XMLSummator.ApplicationCore.Interfaces
 {
-    public interface IValidatorFileService
+    public interface IValidatorFile
     {
-        bool IsValidNameFile(string fileName);
+        bool IsNotValidNameFile(string fileName);
 
         bool IsValidSizeFile(int fileSize);
 
-        //bool IsValidFormat();
+        bool IsValidFormat();
     }
 }

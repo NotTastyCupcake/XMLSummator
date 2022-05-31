@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metcom.XMLSummator.ApplicationCore.Services
+namespace Metcom.XMLSummer.WindowsForms.Presentation
 {
-    public class ValidatorFileService
+    public class Class1
     {
-        
     }
 }
