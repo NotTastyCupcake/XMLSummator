@@ -5,4 +5,8 @@
     <RootNamespace>Metcom.XMLSummator.ApplicationCore</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Services\FileWorkerService.Example.cs" />
+  </ItemGroup>
+
 </Project>
