@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Metcom.XMLSummator.ApplicationCore.Entities
+namespace Metcom.XMLSummator.ApplicationCore.Entities.ReportingModel.BalanceModel
 {
-    public class ReportingBaseEntity : BaseEntity
+    public class ReportingBalanceBaseEntity : BaseEntity
     {
         /// <summary>
         /// Вид баланса (Баланс, ИтогоБаланс, ИтогоДовУпр, ВнебалСч и т.д)
         /// </summary>
-        [XmlElement]
+        [XmlAnyElement]
         public string BalanceType { get; set; }
         /// <summary>
         /// Валюта

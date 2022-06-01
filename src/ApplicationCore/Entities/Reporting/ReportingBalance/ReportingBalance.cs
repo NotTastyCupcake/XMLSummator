@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Metcom.XMLSummator.ApplicationCore.Entities.ReportingAggregate
+namespace Metcom.XMLSummator.ApplicationCore.Entities.ReportingModel.BalanceModel
 {
-    [Serializable]
-    public class ReportingBalance : ReportingBaseEntity
+    public class ReportingBalance : ReportingBalanceBaseEntity
     {
         [XmlAttribute("Счет2Пор")]
         /// <summary>

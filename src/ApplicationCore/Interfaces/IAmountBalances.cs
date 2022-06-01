@@ -1,5 +1,5 @@
 ﻿using Metcom.XMLSummator.ApplicationCore.Entities;
-using Metcom.XMLSummator.ApplicationCore.Entities.ReportingAggregate;
+using Metcom.XMLSummator.ApplicationCore.Entities.ReportingModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +11,6 @@ namespace Metcom.XMLSummator.ApplicationCore.Interfaces
 {
     public interface IAmountBalances
     {
-        BalanceData Amount(BalanceData FirstBalance, BalanceData SecondBalance); 
+        BalanceCollection Amount(BalanceCollection FirstBalance, BalanceCollection SecondBalance); 
     }
 }
