@@ -9,8 +9,9 @@ namespace Metcom.XMLSummator.ApplicationCore.Entities
 {
     public class BalanceData
     {
-        public ReportingBalance Balance { get; set; }
+        public ICollection<ReportingBalance> Balance { get; set; }
+        
+        public ICollection<ReportingTotalBalance> TotalBalance { get; set; }
 
-        public ReportingTotalBalance TotalBalance { get; set; }
     }
 }

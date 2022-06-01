@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metcom.XMLSummator.ApplicationCore.Entities
 {
+    [Serializable]
     public class ReportingTotalBalance : ReportingBaseEntity
     {
 

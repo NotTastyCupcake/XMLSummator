@@ -9,41 +9,40 @@ namespace Metcom.XMLSummator.ApplicationCore.Entities
 {
     public class ReportingBaseEntity : BaseEntity
     {
-        [XmlElement]
         /// <summary>
         /// Вид баланса (Баланс, ИтогоБаланс, ИтогоДовУпр, ВнебалСч и т.д)
         /// </summary>
+        [XmlElement]
         public string BalanceType { get; set; }
-
-        [XmlAttribute]
         /// <summary>
         /// Валюта
         /// </summary>
+        [XmlAttribute("Валюта")]
         public string Currency { get; set; }
-        [XmlAttribute]
         /// <summary>
         /// ПризнакАП
         /// </summary>
+        [XmlAttribute("ПризнакАП")]
         public string Feature { get; set; }
-        [XmlAttribute]
         /// <summary>
         /// Входящий остаток - ВхОст
         /// </summary>
+        [XmlAttribute("ВхОст")]
         public int IncomingBalance { get; set; }
-        [XmlAttribute]
         /// <summary>
         /// Оборот по дебету - ОбДеб
         /// </summary>
+        [XmlAttribute("ОбДеб")]
         public int DebitTurnover { get; set; }
-        [XmlAttribute]
         /// <summary>
         /// Оборот по кридиту - ОбКр
         /// </summary>
+        [XmlAttribute("ОбКр")]
         public int LoanTurnover { get; set; }
-        [XmlAttribute]
         /// <summary>
         /// Исходящий остаток - ИсхОст
         /// </summary>
+        [XmlAttribute("ИсхОст")]
         public int OutgoingBalance { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Metcom.XMLSummator.ApplicationCore.Interfaces;
 using Metcom.XMLSummator.ApplicationCore.Services;
 using Metcom.XMLSummator.WindowsForms.Presentation.Common;
+using Metcom.XMLSummator.WindowsForms.Presentation.Presenters;
 using Metcom.XMLSummator.WindowsForms.Presentation.Views;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace Metcom.XMLSummator.WindowsForms.UI
     .RegisterService<IFileWorkerService, FileWorkerService>()
     .RegisterInstance(new ApplicationContext());
 
-            Application.Run(new XMLSummatorForm());
+            controller.Run<FileWorkerPresenter>();
         }
     }
 }

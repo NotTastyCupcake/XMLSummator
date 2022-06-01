@@ -7,13 +7,14 @@ using System.Xml.Serialization;
 
 namespace Metcom.XMLSummator.ApplicationCore.Entities.ReportingAggregate
 {
+    [Serializable]
     public class ReportingBalance : ReportingBaseEntity
     {
-        [XmlAttribute]
+        [XmlAttribute("Счет2Пор")]
         /// <summary>
         /// Идентификатор клиента - Счет2Пор
         /// </summary>
-        public int ClientId { get; set; }
+        public int SecondOrderAccount { get; set; }
 
     }
 }

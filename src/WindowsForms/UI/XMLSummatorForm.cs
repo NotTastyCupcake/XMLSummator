@@ -13,9 +13,13 @@ namespace Metcom.XMLSummator.WindowsForms.UI
 {
     public partial class XMLSummatorForm : Form, IFilesWorkerView
     {
-        public XMLSummatorForm()
+        private readonly ApplicationContext _context;
+        public XMLSummatorForm(ApplicationContext context)
         {
+            _context = context;
             InitializeComponent();
+
+            btnAmount.Click += (sender, args) => Invoke(CreataAmountFiles);
         }
 
         public string FirstFileName => throw new NotImplementedException();
@@ -26,7 +30,12 @@ namespace Metcom.XMLSummator.WindowsForms.UI
 
         public void ShowError(string errorMessage)
         {
-            throw new NotImplementedException();
+            _context.MainForm = this;
+            base.Show();
+        }
+        private void Invoke(Action action)
+        {
+            if (action != null) action();
         }
     }
 }
