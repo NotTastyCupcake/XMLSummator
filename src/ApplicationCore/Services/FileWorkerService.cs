@@ -1,5 +1,5 @@
 ﻿using Metcom.XMLSummator.ApplicationCore.Entities;
-using Metcom.XMLSummator.ApplicationCore.Entities.ReportingModel;
+using Metcom.XMLSummator.ApplicationCore.Entities.BalanceModel;
 using Metcom.XMLSummator.ApplicationCore.Extensions;
 using Metcom.XMLSummator.ApplicationCore.Interfaces;
 using System;
@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace Metcom.XMLSummator.ApplicationCore.Services
@@ -17,13 +18,22 @@ namespace Metcom.XMLSummator.ApplicationCore.Services
         private IValidatorFile _validatorFile = new ValidatorFile();
         private IAmountBalances _amountBalances = new AmountBalance();
 
-        public void CreataAmountFiles(string firstFileName, string secondFileName)
+        public bool CreataAmountFiles(string firstFileName, string secondFileName)
         {
+
             // Now we can read the serialized book ...  
-            XmlSerializer reader = new XmlSerializer(typeof(BalanceCollection));
-            StreamReader file = new StreamReader(firstFileName);
-            BalanceCollection overview = (BalanceCollection)reader.Deserialize(file);
-            file.Close();
+            XmlSerializer serialize = new XmlSerializer(typeof(RootXMLForm));
+            StreamReader fileFirst = new StreamReader(firstFileName, Encoding.GetEncoding(1251));
+            RootXMLForm formFirst = (RootXMLForm)serialize.Deserialize(fileFirst);
+            fileFirst.Close();
+            
+            StreamReader secondFirst = new StreamReader(secondFileName, Encoding.GetEncoding(1251));
+            RootXMLForm formSecond = (RootXMLForm)serialize.Deserialize(fileFirst);
+            secondFirst.Close();
+
+            RootXMLForm res = _amountBalances.Amount(formFirst, formSecond);
+
+            return false;
         }
     }
 }

@@ -10,6 +10,6 @@ namespace Metcom.XMLSummator.ApplicationCore.Interfaces
 {
     public interface IFileWorkerService
     {
-         void CreataAmountFiles(string firstFileName, string secondFileName);
+         bool CreataAmountFiles(string firstFileName, string secondFileName);
     }
 }
