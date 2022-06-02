@@ -23,9 +23,9 @@ namespace Metcom.XMLSummator.WindowsForms.UI
             Application.SetCompatibleTextRenderingDefault(false);
 
             var controller = new ApplicationController(new LightInjectAdapder())
-    .RegisterView<IFilesWorkerView, XMLSummatorForm>()
-    .RegisterService<IFileWorkerService, FileWorkerService>()
-    .RegisterInstance(new ApplicationContext());
+                .RegisterView<IFilesWorkerView, XMLSummatorForm>()
+                .RegisterService<IFileWorkerService, FileWorkerService>()
+                .RegisterInstance(new ApplicationContext());
 
             controller.Run<FileWorkerPresenter>();
         }

@@ -19,13 +19,18 @@ namespace Metcom.XMLSummator.WindowsForms.UI
             _context = context;
             InitializeComponent();
 
-            btnAmount.Click += (sender, args) => Invoke(CreataAmountFiles);
+            btnCreate.Click += (sender, args) => Invoke(CreataAmountFiles);
         }
 
-        public string FirstFileName => throw new NotImplementedException();
+        public new void Show()
+        {
+            _context.MainForm = this;
+            Application.Run(_context);
+        }
 
-        public string SecondFileName => throw new NotImplementedException();
+        public string FirstFileName { get { return txtFileNameFirst.Text; } }
 
+        public string SecondFileName { get { return txtFileNameSecond.Text; } }
         public event Action CreataAmountFiles;
 
         public void ShowError(string errorMessage)

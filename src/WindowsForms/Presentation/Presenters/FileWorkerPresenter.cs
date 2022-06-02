@@ -31,7 +31,7 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Presenters
                 throw new ArgumentNullException(secondFileName);
             }
 
-
+            _service.CreataAmountFiles(firstFileName, secondFileName);
 
         }
     }

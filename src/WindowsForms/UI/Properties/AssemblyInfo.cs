@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GMetcom.XMLSummator.WindowsForms.UID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: GMetcom.XMLSummator.WindowsForms.UId("c32818e3-856a-43b7-b4c4-f0af9ed0e562")]
+[assembly: Guid("c32818e3-856a-43b7-b4c4-f0af9ed0e562")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
