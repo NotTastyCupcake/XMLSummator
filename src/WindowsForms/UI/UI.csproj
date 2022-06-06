@@ -89,7 +89,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ApplicationCoreFW\ApplicationCore.csproj">
+    <ProjectReference Include="..\..\ApplicationCore\ApplicationCore.csproj">
       <Project>{F09A2BEE-85F6-4B38-BF6F-D79E5186B74F}</Project>
       <Name>ApplicationCore</Name>
     </ProjectReference>
