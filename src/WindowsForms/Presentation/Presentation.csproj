@@ -52,8 +52,8 @@
     <Compile Include="Views\IFilesWorkerView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ApplicationCore\ApplicationCore.csproj">
-      <Project>{EE9829EF-552D-4931-BDA2-95A62D6746E6}</Project>
+    <ProjectReference Include="..\..\ApplicationCoreFW\ApplicationCore.csproj">
+      <Project>{F09A2BEE-85F6-4B38-BF6F-D79E5186B74F}</Project>
       <Name>ApplicationCore</Name>
     </ProjectReference>
   </ItemGroup>
