@@ -17,21 +17,25 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Presenters
         {
             _service = service;
 
-            View.CreataAmountFiles += () => CreataAmountFiles(View.FirstFileName, View.SecondFileName);
+            View.CreataAmountFiles += () => CreataAmountFiles(View.FirstFileName, View.SecondFileName, View.ResultFileName);
         }
 
-        private void CreataAmountFiles(string firstFileName, string secondFileName)
+        private void CreataAmountFiles(string firstFileName, string secondFileName, string resultFileName)
         {
             if (string.IsNullOrWhiteSpace(firstFileName))
             {
-                throw new ArgumentNullException(firstFileName);
+                throw new ArgumentNullException("firstFileName");
             }
             if (string.IsNullOrWhiteSpace(secondFileName))
             {
-                throw new ArgumentNullException(secondFileName);
+                throw new ArgumentNullException("secondFileName");
+            }
+            if (string.IsNullOrWhiteSpace(resultFileName))
+            {
+                throw new ArgumentNullException("resultFileName");
             }
 
-            _service.CreataAmountFiles(firstFileName, secondFileName);
+            _service.CreataAmountFile(firstFileName, secondFileName, resultFileName);
 
         }
     }

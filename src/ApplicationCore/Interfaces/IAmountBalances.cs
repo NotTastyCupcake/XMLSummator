@@ -11,6 +11,7 @@ namespace Metcom.XMLSummator.ApplicationCore.Interfaces
 {
     public interface IAmountBalances
     {
-        RootXMLForm Amount(RootXMLForm firstFileData, RootXMLForm secondFileData); 
+        ReportForm Amount(ReportForm firstFileData, ReportForm secondFileData);
+        ReportForm Amount(ICollection<ReportForm> reportForms);
     }
 }

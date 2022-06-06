@@ -29,8 +29,9 @@ namespace Metcom.XMLSummator.WindowsForms.UI
         }
 
         public string FirstFileName { get { return txtFileNameFirst.Text; } }
-
         public string SecondFileName { get { return txtFileNameSecond.Text; } }
+        public string ResultFileName { get { return txtResultFileName.Text; } }
+
         public event Action CreataAmountFiles;
 
         public void ShowError(string errorMessage)
@@ -41,6 +42,7 @@ namespace Metcom.XMLSummator.WindowsForms.UI
         private void Invoke(Action action)
         {
             if (action != null) action();
+            MessageBox.Show("Файл сохранен");
         }
     }
 }

@@ -13,9 +13,26 @@ namespace Metcom.XMLSummator.ApplicationCore.Extensions
 {
     public class AmountBalance : IAmountBalances
     {
-        public RootXMLForm Amount(RootXMLForm firstFileData, RootXMLForm secondFileData)
+        //TODO: Реализовать нормально сложение двух файлов в один
+        /// <summary>
+        /// Формирование итоговой формы
+        /// </summary>
+        /// <param name="reportForms"></param>
+        /// <returns>Колекция форм</returns>
+        public ReportForm Amount(ICollection<ReportForm> reportForms)
         {
-            RootXMLForm res = new RootXMLForm() 
+            var reportFormsArr = reportForms.ToArray();
+
+
+
+            return null;
+        }
+
+        #region ShitCode
+
+        public ReportForm Amount(ReportForm firstFileData, ReportForm secondFileData)
+        {
+            ReportForm res = new ReportForm()
             {
                 MainFormAttrebute = firstFileData.MainFormAttrebute,
                 PersonData = firstFileData.PersonData,
@@ -38,7 +55,7 @@ namespace Metcom.XMLSummator.ApplicationCore.Extensions
             };
 
 
-            var resultBalanceCollection = SumBalance(unionBalanceCollection, firstBalanceCollection);
+            var resultBalanceCollection = SumBalance(unionBalanceCollection, secondBalanceCollection);
 
             res.BalanceCollection = resultBalanceCollection;
 
@@ -163,7 +180,8 @@ namespace Metcom.XMLSummator.ApplicationCore.Extensions
 
             return result;
         }
-            
+
+        #endregion
 
     }
 }

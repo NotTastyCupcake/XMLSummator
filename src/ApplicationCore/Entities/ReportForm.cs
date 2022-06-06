@@ -11,7 +11,7 @@ namespace Metcom.XMLSummator.ApplicationCore.Entities
 {
     [Serializable]
     [XmlRoot(ElementName = "Ф0409101", Namespace = "urn:cbr-ru:rep0409101:v1.0.4.5")]
-    public class RootXMLForm
+    public class ReportForm
     {
         [XmlAnyAttribute]
         public XmlAttribute[] MainFormAttrebute { get; set; }

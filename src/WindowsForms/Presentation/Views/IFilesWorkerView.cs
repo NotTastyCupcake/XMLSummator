@@ -12,6 +12,7 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Views
     {
         string FirstFileName { get; }
         string SecondFileName { get; }
+        string ResultFileName { get; }
 
         event Action CreataAmountFiles;
         void ShowError(string errorMessage);
