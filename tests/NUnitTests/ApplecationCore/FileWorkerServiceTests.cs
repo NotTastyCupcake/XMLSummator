@@ -1,4 +1,5 @@
-﻿using Metcom.XMLSummator.ApplicationCore.Services;
+﻿
+using Metcom.XMLSummator.ApplicationCore.Services;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
