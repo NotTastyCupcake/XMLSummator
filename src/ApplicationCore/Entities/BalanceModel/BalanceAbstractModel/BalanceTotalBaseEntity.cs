@@ -7,9 +7,26 @@ using System.Xml.Serialization;
 
 namespace Metcom.XMLSummator.ApplicationCore.Entities.BalanceModel.BalanceAbstractModel
 {
-    public abstract class TotalBalanceBaseEntity : ReportingBalanceBaseEntity
+
+    [Serializable]
+    public abstract class BalanceTotalBaseEntity : ReportingBalanceBaseEntity
     {
-        [XmlElement("Баланс")]
-        public new virtual string BalanceType { get; set; }
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as BalanceTotalBaseEntity);
+        }
+
+        public bool Equals(BalanceTotalBaseEntity other)
+        {
+            return other != null &&
+                   BalanceType == other.BalanceType &&
+                   Currency == other.Currency &&
+                   Feature == other.Feature;
+        }
+
+        public override int GetHashCode()
+        {
+            return BalanceType.GetHashCode() ^ Currency.GetHashCode() ^ Feature.GetHashCode();
+        }
     }
 }

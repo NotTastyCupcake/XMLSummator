@@ -20,7 +20,7 @@ namespace Metcom.XMLSummator.ApplicationCore.Entities
         public Data PersonData { get; set; }
 
         [XmlElement("Данные101")]
-        public BalanceCollection  BalanceCollection {get; set;}
+        public BalanceCollection BalanceCollection {get; set;}
 
         [XmlElement(ElementName ="ИнфПК", Namespace = "urn:cbr-ru:rep0409101:v1.0.4.5")]
         public Footer FooterData { get; set; }

@@ -27,11 +27,23 @@ namespace Metcom.XMLSummator.ApplicationCore.Services
             RootXMLForm formFirst = (RootXMLForm)serialize.Deserialize(fileFirst);
             fileFirst.Close();
             
-            StreamReader secondFirst = new StreamReader(secondFileName, Encoding.GetEncoding(1251));
-            RootXMLForm formSecond = (RootXMLForm)serialize.Deserialize(fileFirst);
-            secondFirst.Close();
+            StreamReader fileSecond = new StreamReader(secondFileName, Encoding.GetEncoding(1251));
+            RootXMLForm formSecond = (RootXMLForm)serialize.Deserialize(fileSecond);
+            fileSecond.Close();
+
 
             RootXMLForm res = _amountBalances.Amount(formFirst, formSecond);
+
+            XmlWriterSettings writerSettings = new XmlWriterSettings();
+            writerSettings.Encoding = Encoding.GetEncoding(1251);
+            writerSettings.Indent = true;
+            
+            FileStream writer = File.Create(firstFileName);
+            XmlWriter xwriter = XmlWriter.Create(writer, writerSettings);
+            xwriter.WriteProcessingInstruction("xml", "version=\"1.0\" encoding=\"windows - 1251\" standalone=\"yes\"");
+            serialize.Serialize(xwriter, res);
+
+            writer.Close();
 
             return false;
         }

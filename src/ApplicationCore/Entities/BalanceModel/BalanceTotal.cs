@@ -9,27 +9,36 @@ using System.Xml.Serialization;
 namespace Metcom.XMLSummator.ApplicationCore.Entities.BalanceModel
 {
     [Serializable]
-    public class TotalBalance : TotalBalanceBaseEntity
+    public class TotalBalance : BalanceTotalBaseEntity
     {
-        [XmlElement("ИтогоБаланс")]
-        public new string BalanceType { get; set; } = "ИтогоБаланс";
+        public TotalBalance()
+        {
+            base.BalanceType = "ИтогоБаланс";
+        }
     }
     [Serializable]
-    public class TotalTrust : TotalBalanceBaseEntity
+    public class TotalTrust : BalanceTotalBaseEntity
     {
-        [XmlElement("ИтогоДовУпр")]
-        public new string BalanceType { get; set; } = "ИтогоБаланс";
+        public TotalTrust()
+        {
+            base.BalanceType = "ИтогоДовУпр";
+        }
+
     }
     [Serializable]
-    public class TotalOutBalance : TotalBalanceBaseEntity
+    public class TotalOutBalance : BalanceTotalBaseEntity
     {
-        [XmlElement("ИтогоВнебалСч")]
-        public new string BalanceType { get; set; } = "ИтогоВнебалСч";
+        public TotalOutBalance()
+        {
+            base.BalanceType = "ИтогоВнебалСч";
+        }
     }
     [Serializable]
-    public class TotalFastBalance : TotalBalanceBaseEntity
+    public class TotalFastBalance : BalanceTotalBaseEntity
     {
-        [XmlElement("ИтогоСрочные")]
-        public new string BalanceType { get; set; } = "ИтогоСрочные";
+        public TotalFastBalance()
+        {
+            base.BalanceType = "ИтогоСрочные";
+        }
     }
 }
