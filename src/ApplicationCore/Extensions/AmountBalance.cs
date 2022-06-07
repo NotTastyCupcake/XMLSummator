@@ -42,20 +42,20 @@ namespace Metcom.XMLSummator.ApplicationCore.Extensions
             var firstBalanceCollection = firstFileData.BalanceCollection;
             var secondBalanceCollection = secondFileData.BalanceCollection;
 
-            BalanceCollection unionBalanceCollection = new BalanceCollection()
-            {
-                Id = firstBalanceCollection.Id,
-                Balances = firstBalanceCollection.Balances.Union(secondBalanceCollection.Balances).ToArray(),
-                BalancesOut = firstBalanceCollection.BalancesOut.Union(secondBalanceCollection.BalancesOut).ToArray(),
-                BalancesFaster = firstBalanceCollection.BalancesFaster.Union(secondBalanceCollection.BalancesFaster).ToArray(),
-                TotalBalances = firstBalanceCollection.TotalBalances.Union(secondBalanceCollection.TotalBalances).ToArray(),
-                TotalFastBalances = firstBalanceCollection.TotalFastBalances.Union(secondBalanceCollection.TotalFastBalances).ToArray(),
-                TotalOutBalances = firstBalanceCollection.TotalOutBalances.Union(secondBalanceCollection.TotalOutBalances).ToArray(),
-                TotalTrusts = firstBalanceCollection.TotalTrusts.Union(secondBalanceCollection.TotalTrusts).ToArray(),
-            };
 
+            var resultBalanceCollection = SumBalance(firstBalanceCollection, secondBalanceCollection);
 
-            var resultBalanceCollection = SumBalance(unionBalanceCollection, secondBalanceCollection);
+            //resultBalanceCollection = new BalanceCollection()
+            //{
+            //    Id = firstBalanceCollection.Id,
+            //    Balances = resultBalanceCollection.Balances.Union(secondBalanceCollection.Balances).ToArray(),
+            //    BalancesOut = resultBalanceCollection.BalancesOut.Union(secondBalanceCollection.BalancesOut).ToArray(),
+            //    BalancesFaster = resultBalanceCollection.BalancesFaster.Union(secondBalanceCollection.BalancesFaster).ToArray(),
+            //    TotalBalances = resultBalanceCollection.TotalBalances.Union(secondBalanceCollection.TotalBalances).ToArray(),
+            //    TotalFastBalances = resultBalanceCollection.TotalFastBalances.Union(secondBalanceCollection.TotalFastBalances).ToArray(),
+            //    TotalOutBalances = resultBalanceCollection.TotalOutBalances.Union(secondBalanceCollection.TotalOutBalances).ToArray(),
+            //    TotalTrusts = resultBalanceCollection.TotalTrusts.Union(secondBalanceCollection.TotalTrusts).ToArray(),
+            //};
 
             res.BalanceCollection = resultBalanceCollection;
 

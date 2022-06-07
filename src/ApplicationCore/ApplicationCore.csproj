@@ -48,7 +48,7 @@
     <Compile Include="Entities\BalanceModel\BalanceCollection.cs" />
     <Compile Include="Entities\BalanceModel\BalanceTotal.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
-    <Compile Include="Entities\Data.cs" />
+    <Compile Include="Entities\ContactData.cs" />
     <Compile Include="Entities\ReportForm.cs" />
     <Compile Include="Extensions\AmountBalance.cs" />
     <Compile Include="Extensions\ValidatorFile.cs" />
