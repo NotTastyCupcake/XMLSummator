@@ -10,7 +10,7 @@ namespace Metcom.XMLSummator.ApplicationCore.Entities
 {
     [Serializable]
     [XmlRoot(ElementName = "Составитель", Namespace = "urn:cbr-ru:rep0409101:v1.0.4.5")]
-    public class Data
+    public class ContactData
     {
         [XmlAnyAttribute]
         public XmlAttribute[] Attrebutes { get; set; }

@@ -17,7 +17,7 @@ namespace Metcom.XMLSummator.ApplicationCore.Entities
         public XmlAttribute[] MainFormAttrebute { get; set; }
 
         [XmlElement("Составитель")]
-        public Data PersonData { get; set; }
+        public ContactData PersonData { get; set; }
 
         [XmlElement("Данные101")]
         public BalanceCollection BalanceCollection {get; set;}
