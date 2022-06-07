@@ -11,9 +11,9 @@ namespace Metcom.XMLSummator.ApplicationCore.Interfaces
     public interface IFileWorkerService
     {
         bool CreataAmountFile(string firstFileName, string secondFileName, string resultFile);
-        void AddReportForms(StreamReader[] streams);
+        void AddReportForm(StreamReader stream);
         void AmountForms();
-        void CreateResultFile(string resultFileName);
+        void CreateResultFile(FileStream resultFile);
 
     }
 }

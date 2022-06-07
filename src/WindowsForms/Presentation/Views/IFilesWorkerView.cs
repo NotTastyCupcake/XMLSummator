@@ -1,6 +1,7 @@
 ﻿using Metcom.XMLSummator.WindowsForms.Presentation.Common;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,11 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Views
         string FirstFileName { get; }
         string SecondFileName { get; }
         string ResultFileName { get; }
+        ICollection<StreamReader> StreamReaders { get; }
+        FileStream ResultStream { get; }
 
         event Action CreataAmountFiles;
+
         void ShowError(string errorMessage);
     }
 }
