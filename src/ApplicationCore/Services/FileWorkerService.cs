@@ -27,55 +27,27 @@ namespace Metcom.XMLSummator.ApplicationCore.Services
             _amountBalances = new AmountBalance();
         }
 
-
-        public bool CreataAmountFile(string firstFileName, string secondFileName, string resultFileName)
+        public void DeserializeReportForms(ICollection<StreamReader> streams)
         {
-
-            // Now we can read the serialized book ...  
-            XmlSerializer serialize = new XmlSerializer(typeof(ReportForm));
-            StreamReader fileFirst = new StreamReader(firstFileName, Encoding.GetEncoding(1251));
-            ReportForm formFirst = (ReportForm)serialize.Deserialize(fileFirst);
-            fileFirst.Close();
-            
-            StreamReader fileSecond = new StreamReader(secondFileName, Encoding.GetEncoding(1251));
-            ReportForm formSecond = (ReportForm)serialize.Deserialize(fileSecond);
-            fileSecond.Close();
-
-
-            ReportForm res = _amountBalances.Amount(formFirst, formSecond);
-
-            XmlWriterSettings writerSettings = new XmlWriterSettings();
-            writerSettings.Encoding = Encoding.GetEncoding(1251);
-            writerSettings.Indent = true;
-            
-            FileStream writer = File.Create(resultFileName);
-
-            XmlWriter xwriter = XmlWriter.Create(writer, writerSettings);
-            xwriter.WriteProcessingInstruction("xml", "version=\"1.0\" encoding=\"windows-1251\" standalone=\"yes\"");
-            serialize.Serialize(xwriter, res);
-
-            writer.Close();
-
-            return false;
-        }
-
-        public void AddReportForm(StreamReader stream)
-        {
-            XmlSerializer serialize = new XmlSerializer(typeof(ReportForm));
-            try
+            foreach(var stream in streams)
             {
-                ReportForm desForm = (ReportForm)serialize.Deserialize(stream);
-                ReportForms.Add(desForm);
+                XmlSerializer serialize = new XmlSerializer(typeof(ReportForm));
+                try
+                {
+                    ReportForm desForm = (ReportForm)serialize.Deserialize(stream);
+                    ReportForms.Add(desForm);
+                }
+                finally
+                {
+                    stream.Close();
+                }
             }
-            finally
-            {
-                stream.Close();
-            }
+           
         }
 
         public void AmountForms()
         {
-            res = _amountBalances.Amount(ReportForms);
+            res = _amountBalances.AmountBalances(ReportForms);
         }
 
         public void CreateResultFile(FileStream resultFile)
@@ -87,7 +59,7 @@ namespace Metcom.XMLSummator.ApplicationCore.Services
                 XmlWriterSettings writerSettings = new XmlWriterSettings();
                 writerSettings.Encoding = Encoding.GetEncoding(1251);
                 writerSettings.Indent = true;
-                
+
                 XmlWriter xwriter = XmlWriter.Create(resultFile, writerSettings);
                 xwriter.WriteProcessingInstruction("xml", "version=\"1.0\" encoding=\"windows-1251\" standalone=\"yes\"");
                 serialize.Serialize(xwriter, res);
@@ -98,7 +70,5 @@ namespace Metcom.XMLSummator.ApplicationCore.Services
                 resultFile.Close();
             }
         }
-
-
     }
 }

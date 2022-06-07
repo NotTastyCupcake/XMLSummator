@@ -11,9 +11,6 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Views
 {
     public interface IFilesWorkerView : IView
     {
-        string FirstFileName { get; }
-        string SecondFileName { get; }
-        string ResultFileName { get; }
         ICollection<StreamReader> StreamReaders { get; }
         FileStream ResultStream { get; }
 

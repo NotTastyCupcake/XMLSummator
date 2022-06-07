@@ -13,25 +13,22 @@ namespace Metcom.XMLSummator.ApplicationCore.Extensions
 {
     public class AmountBalance : IAmountBalances
     {
+        private ReportForm[] _reportForms;
+        
+
         //TODO: Реализовать нормально сложение двух файлов в один
         /// <summary>
         /// Формирование итоговой формы
         /// </summary>
         /// <param name="reportForms"></param>
         /// <returns>Колекция форм</returns>
-        public ReportForm Amount(ICollection<ReportForm> reportForms)
+        public ReportForm AmountBalances(ICollection<ReportForm> reportForms)
         {
-            var reportFormsArr = reportForms.ToArray();
+            _reportForms = reportForms.ToArray();
 
+            var firstFileData = _reportForms[0];
+            var secondFileData = _reportForms[1];
 
-
-            return null;
-        }
-
-        #region ShitCode
-
-        public ReportForm Amount(ReportForm firstFileData, ReportForm secondFileData)
-        {
             ReportForm res = new ReportForm()
             {
                 MainFormAttrebute = firstFileData.MainFormAttrebute,
@@ -45,23 +42,12 @@ namespace Metcom.XMLSummator.ApplicationCore.Extensions
 
             var resultBalanceCollection = SumBalance(firstBalanceCollection, secondBalanceCollection);
 
-            //resultBalanceCollection = new BalanceCollection()
-            //{
-            //    Id = firstBalanceCollection.Id,
-            //    Balances = resultBalanceCollection.Balances.Union(secondBalanceCollection.Balances).ToArray(),
-            //    BalancesOut = resultBalanceCollection.BalancesOut.Union(secondBalanceCollection.BalancesOut).ToArray(),
-            //    BalancesFaster = resultBalanceCollection.BalancesFaster.Union(secondBalanceCollection.BalancesFaster).ToArray(),
-            //    TotalBalances = resultBalanceCollection.TotalBalances.Union(secondBalanceCollection.TotalBalances).ToArray(),
-            //    TotalFastBalances = resultBalanceCollection.TotalFastBalances.Union(secondBalanceCollection.TotalFastBalances).ToArray(),
-            //    TotalOutBalances = resultBalanceCollection.TotalOutBalances.Union(secondBalanceCollection.TotalOutBalances).ToArray(),
-            //    TotalTrusts = resultBalanceCollection.TotalTrusts.Union(secondBalanceCollection.TotalTrusts).ToArray(),
-            //};
-
             res.BalanceCollection = resultBalanceCollection;
 
             return res;
-
         }
+
+        #region ShitCode
 
         private BalanceCollection SumBalance(BalanceCollection firstBalance, BalanceCollection secondBalance)
         {

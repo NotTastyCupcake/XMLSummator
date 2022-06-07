@@ -38,19 +38,15 @@ namespace Metcom.XMLSummator.WindowsForms.UI
             Application.Run(_context);
         }
 
-        public string FirstFileName { get { return txtFileNameSecond.Text; } }
-        public string SecondFileName { get { return txtFileNameFirst.Text; } }
-        public string ResultFileName { get { return txtResultFileName.Text; } }
         public ICollection<StreamReader> StreamReaders { get { return _streamReaders; } }
         public FileStream ResultStream { get { return _resultStream; } }
-
 
         public event Action CreataAmountFiles;
 
         public void ShowError(string errorMessage)
         {
-            _context.MainForm = this;
-            base.Show();
+            labError.Visible = true;
+            labError.Text = errorMessage;
         }
 
         private void Invoke(Action action)
@@ -58,6 +54,7 @@ namespace Metcom.XMLSummator.WindowsForms.UI
             if (action != null) action();
         }
 
+        #region Нужно вынести
         private void InvokeFileDialogFirst()
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -74,15 +71,11 @@ namespace Metcom.XMLSummator.WindowsForms.UI
 
                     //Read the contents of the file into a stream
                     var fileStream = openFileDialog.OpenFile();
-
-                    using (StreamReader reader = new StreamReader(fileStream))
-                    {
-                        _streamReaders[0] = reader;
-                    }
+                    _streamReaders[0] = new StreamReader(fileStream, Encoding.GetEncoding(1251));
                 }
             }
         }
-        
+
         private void InvokeFileDialogSecond()
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -94,16 +87,11 @@ namespace Metcom.XMLSummator.WindowsForms.UI
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    //Get the path of specified file
                     txtFileNameSecond.Text = openFileDialog.FileName;
 
                     //Read the contents of the file into a stream
                     var fileStream = openFileDialog.OpenFile();
-
-                    using (StreamReader reader = new StreamReader(fileStream))
-                    {
-                        _streamReaders[1] = reader;
-                    }
+                    _streamReaders[1] = new StreamReader(fileStream, Encoding.GetEncoding(1251));
                 }
             }
         }
@@ -119,12 +107,13 @@ namespace Metcom.XMLSummator.WindowsForms.UI
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    //Get the path of specified file
                     txtResultFileName.Text = saveFileDialog.FileName;
+
+                    _resultStream = File.Create(saveFileDialog.FileName);
                 }
             }
         }
-
+        #endregion
 
     }
 }

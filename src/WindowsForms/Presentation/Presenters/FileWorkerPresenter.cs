@@ -19,28 +19,38 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Presenters
         {
             _service = service;
 
-            View.CreataAmountFiles += () => CreataAmountFiles(View.FirstFileName, View.SecondFileName, View.ResultFileName);
+            View.CreataAmountFiles += () => CreateAmountFiles(View.StreamReaders, View.ResultStream);
         }
-        
 
-
-        private void CreataAmountFiles(string firstFileName, string secondFileName, string resultFileName)
+        private void CreateAmountFiles(ICollection<StreamReader> streamReaders, FileStream fileStream)
         {
-            if (string.IsNullOrWhiteSpace(firstFileName))
+            if (fileStream == null)
             {
-                throw new ArgumentNullException("Путь к первому файлу");
-            }
-            if (string.IsNullOrWhiteSpace(secondFileName))
-            {
-                throw new ArgumentNullException("Путь к второму файлу");
-            }
-            if (string.IsNullOrWhiteSpace(resultFileName))
-            {
-                throw new ArgumentNullException("Куда сохранить");
+                View.ShowError("Путь для сохранения не выбран");
+                return;
             }
 
-            _service.CreataAmountFile(firstFileName, secondFileName, resultFileName);
+            if (streamReaders == null || streamReaders.Contains(null))
+            {
+                View.ShowError("Файлы не выбраны");
+                return;
+            }
+            
 
+            if(streamReaders.Distinct().Count() == streamReaders.Count())
+            {
+                DialogResult res = MessageBox.Show("Вы выбрали один и тот же файл. Продолжить?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (res == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
+
+            _service.DeserializeReportForms(streamReaders);
+            _service.AmountForms();
+            _service.CreateResultFile(fileStream);
+            View.Close();
         }
     }
 }
