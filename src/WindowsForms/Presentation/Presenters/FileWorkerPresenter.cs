@@ -19,25 +19,77 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Presenters
         {
             _service = service;
 
-            View.CreataAmountFiles += () => CreateAmountFiles(View.StreamReaders, View.ResultStream);
+            View.FileDialogFirst += () => FileDialogFirst();
+            View.FileDialogSecond += () => FileDialogSecond();
+            View.FileDialogSave += () => SaveFileDialog();
+
+            View.CreataAmountFiles += () => CreateAmountFiles(View.FileNameFirst, View.FileNameSecond, View.FileNameSave);
         }
 
-        private void CreateAmountFiles(ICollection<StreamReader> streamReaders, FileStream fileStream)
+        private void FileDialogFirst()
         {
-            if (fileStream == null)
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "XML files (*.xml)|*.xml";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    View.FileNameFirst = openFileDialog.FileName;
+                }
+            }
+        }
+
+        private void FileDialogSecond()
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "XML files (*.xml)|*.xml";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    View.FileNameSecond = openFileDialog.FileName;
+                }
+            }
+        }
+
+        private void SaveFileDialog()
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.InitialDirectory = "c:\\";
+                saveFileDialog.Filter = "XML files (*.xml)|*.xml";
+                saveFileDialog.FilterIndex = 2;
+                saveFileDialog.RestoreDirectory = true;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    View.FileNameSave = saveFileDialog.FileName;
+                }
+            }
+        }
+
+        private void CreateAmountFiles(string fileNameFirst, string fileNameSecond, string fileNameSave)
+        {
+            if (string.IsNullOrWhiteSpace(fileNameSave))
             {
                 View.ShowError("Путь для сохранения не выбран");
                 return;
             }
 
-            if (streamReaders == null || streamReaders.Contains(null))
+            if (string.IsNullOrWhiteSpace(fileNameFirst) || string.IsNullOrWhiteSpace(fileNameSecond))
             {
                 View.ShowError("Файлы не выбраны");
                 return;
             }
-            
 
-            if(streamReaders.Distinct().Count() == streamReaders.Count())
+
+            if ( fileNameFirst == fileNameSecond )
             {
                 DialogResult res = MessageBox.Show("Вы выбрали один и тот же файл. Продолжить?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (res == DialogResult.Cancel)
@@ -46,11 +98,40 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Presenters
                 }
             }
 
+            StreamReader[] streamReaders = null;
+            FileStream fileStream = null;
 
-            _service.DeserializeReportForms(streamReaders);
-            _service.AmountForms();
-            _service.CreateResultFile(fileStream);
-            View.Close();
+            try
+            {
+
+                streamReaders = new StreamReader[]
+                {
+                new StreamReader(fileNameSecond, Encoding.GetEncoding(1251)),
+                new StreamReader(fileNameSecond, Encoding.GetEncoding(1251))
+                };
+
+                fileStream = File.Create(fileNameSave);
+                _service.DeserializeReportForms(streamReaders);
+                _service.AmountForms();
+                _service.CreateResultFile(fileStream);
+                View.ShowError("Файл успешно создан");
+
+            }
+            catch (Exception ex)
+            {
+                
+                View.ShowError(ex.Message);
+                return;
+            }
+            finally
+            {
+                Array.ForEach(streamReaders, sr => sr.Close());
+                fileStream.Close();
+            }
+
         }
+        
+
     }
+
 }

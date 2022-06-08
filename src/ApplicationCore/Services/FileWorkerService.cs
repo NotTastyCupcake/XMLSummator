@@ -54,11 +54,14 @@ namespace Metcom.XMLSummator.ApplicationCore.Services
         {
             try
             {
+
                 XmlSerializer serialize = new XmlSerializer(typeof(ReportForm));
 
-                XmlWriterSettings writerSettings = new XmlWriterSettings();
-                writerSettings.Encoding = Encoding.GetEncoding(1251);
-                writerSettings.Indent = true;
+                XmlWriterSettings writerSettings = new XmlWriterSettings
+                {
+                    Encoding = Encoding.GetEncoding(1251),
+                    Indent = true
+                };
 
                 XmlWriter xwriter = XmlWriter.Create(resultFile, writerSettings);
                 xwriter.WriteProcessingInstruction("xml", "version=\"1.0\" encoding=\"windows-1251\" standalone=\"yes\"");

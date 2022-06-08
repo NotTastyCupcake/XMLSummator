@@ -14,20 +14,17 @@ namespace Metcom.XMLSummator.WindowsForms.UI
 {
     public partial class XMLSummatorForm : Form, IFilesWorkerView
     {
-        private readonly StreamReader[] _streamReaders;
-        private FileStream _resultStream;
         private readonly ApplicationContext _context;
 
         public XMLSummatorForm(ApplicationContext context)
         {
-            _streamReaders = new StreamReader[2];
             _context = context;
             InitializeComponent();
 
-            btnFileDialog.Click += (sender, args) => InvokeFileDialogFirst();
-            btnFileDialog2.Click += (sender, args) => InvokeFileDialogSecond();
+            btnFileDialog.Click += (sender, args) => Invoke(FileDialogFirst);
+            btnFileDialog2.Click += (sender, args) => Invoke(FileDialogSecond);
 
-            btnSaveFile.Click += (sender, args) => InvokeSaveFileDialog();
+            btnSaveFile.Click += (sender, args) => Invoke(FileDialogSave);
 
             btnCreate.Click += (sender, args) => Invoke(CreataAmountFiles);
         }
@@ -37,11 +34,15 @@ namespace Metcom.XMLSummator.WindowsForms.UI
             _context.MainForm = this;
             Application.Run(_context);
         }
-
-        public ICollection<StreamReader> StreamReaders { get { return _streamReaders; } }
-        public FileStream ResultStream { get { return _resultStream; } }
+        
+        public string FileNameFirst { get { return txtFileNameFirst.Text; } set { txtFileNameFirst.Text = value; } }
+        public string FileNameSecond { get { return txtFileNameSecond.Text; } set { txtFileNameSecond.Text = value; } }
+        public string FileNameSave { get { return txtResultFileName.Text; } set { txtResultFileName.Text = value; } }
 
         public event Action CreataAmountFiles;
+        public event Action FileDialogFirst;
+        public event Action FileDialogSecond;
+        public event Action FileDialogSave;
 
         public void ShowError(string errorMessage)
         {
@@ -51,69 +52,8 @@ namespace Metcom.XMLSummator.WindowsForms.UI
 
         private void Invoke(Action action)
         {
-            if (action != null) action();
+            action?.Invoke();
         }
-
-        #region Нужно вынести
-        private void InvokeFileDialogFirst()
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "XML files (*.xml)|*.xml";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    //Get the path of specified file
-                    txtFileNameFirst.Text = openFileDialog.FileName;
-
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
-                    _streamReaders[0] = new StreamReader(fileStream, Encoding.GetEncoding(1251));
-                }
-            }
-        }
-
-        private void InvokeFileDialogSecond()
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "XML files (*.xml)|*.xml";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    txtFileNameSecond.Text = openFileDialog.FileName;
-
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
-                    _streamReaders[1] = new StreamReader(fileStream, Encoding.GetEncoding(1251));
-                }
-            }
-        }
-
-        private void InvokeSaveFileDialog()
-        {
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                saveFileDialog.InitialDirectory = "c:\\";
-                saveFileDialog.Filter = "XML files (*.xml)|*.xml";
-                saveFileDialog.FilterIndex = 2;
-                saveFileDialog.RestoreDirectory = true;
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    txtResultFileName.Text = saveFileDialog.FileName;
-
-                    _resultStream = File.Create(saveFileDialog.FileName);
-                }
-            }
-        }
-        #endregion
 
     }
 }

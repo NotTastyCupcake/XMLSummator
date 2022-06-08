@@ -11,10 +11,14 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Views
 {
     public interface IFilesWorkerView : IView
     {
-        ICollection<StreamReader> StreamReaders { get; }
-        FileStream ResultStream { get; }
+        string FileNameFirst { get; set; }
+        string FileNameSecond { get; set; }
+        string FileNameSave { get; set; }
 
         event Action CreataAmountFiles;
+        event Action FileDialogFirst;
+        event Action FileDialogSecond;
+        event Action FileDialogSave;
 
         void ShowError(string errorMessage);
     }

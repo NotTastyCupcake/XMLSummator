@@ -46,7 +46,7 @@
             this.btnCreate.Location = new System.Drawing.Point(398, 156);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(131, 35);
-            this.btnCreate.TabIndex = 0;
+            this.btnCreate.TabIndex = 4;
             this.btnCreate.Text = "Создать файл";
             this.btnCreate.UseVisualStyleBackColor = true;
             // 
@@ -55,14 +55,14 @@
             this.txtFileNameSecond.Location = new System.Drawing.Point(12, 68);
             this.txtFileNameSecond.Name = "txtFileNameSecond";
             this.txtFileNameSecond.Size = new System.Drawing.Size(431, 20);
-            this.txtFileNameSecond.TabIndex = 1;
+            this.txtFileNameSecond.TabIndex = 6;
             // 
             // txtFileNameFirst
             // 
             this.txtFileNameFirst.Location = new System.Drawing.Point(12, 27);
             this.txtFileNameFirst.Name = "txtFileNameFirst";
             this.txtFileNameFirst.Size = new System.Drawing.Size(431, 20);
-            this.txtFileNameFirst.TabIndex = 2;
+            this.txtFileNameFirst.TabIndex = 5;
             // 
             // labFileFirst
             // 
@@ -87,23 +87,23 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 15);
+            this.label1.Size = new System.Drawing.Size(120, 15);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Название нового файла";
+            this.label1.Text = "Путь нового файла";
             // 
             // txtResultFileName
             // 
             this.txtResultFileName.Location = new System.Drawing.Point(12, 109);
             this.txtResultFileName.Name = "txtResultFileName";
             this.txtResultFileName.Size = new System.Drawing.Size(431, 20);
-            this.txtResultFileName.TabIndex = 6;
+            this.txtResultFileName.TabIndex = 7;
             // 
             // btnFileDialog
             // 
             this.btnFileDialog.Location = new System.Drawing.Point(454, 21);
             this.btnFileDialog.Name = "btnFileDialog";
             this.btnFileDialog.Size = new System.Drawing.Size(75, 31);
-            this.btnFileDialog.TabIndex = 7;
+            this.btnFileDialog.TabIndex = 1;
             this.btnFileDialog.Text = "Обзор";
             this.btnFileDialog.UseVisualStyleBackColor = true;
             // 
@@ -112,7 +112,7 @@
             this.btnFileDialog2.Location = new System.Drawing.Point(454, 62);
             this.btnFileDialog2.Name = "btnFileDialog2";
             this.btnFileDialog2.Size = new System.Drawing.Size(75, 30);
-            this.btnFileDialog2.TabIndex = 8;
+            this.btnFileDialog2.TabIndex = 2;
             this.btnFileDialog2.Text = "Обзор";
             this.btnFileDialog2.UseVisualStyleBackColor = true;
             // 
@@ -121,14 +121,15 @@
             this.btnSaveFile.Location = new System.Drawing.Point(454, 103);
             this.btnSaveFile.Name = "btnSaveFile";
             this.btnSaveFile.Size = new System.Drawing.Size(75, 30);
-            this.btnSaveFile.TabIndex = 9;
-            this.btnSaveFile.Text = "Сохранить";
+            this.btnSaveFile.TabIndex = 3;
+            this.btnSaveFile.Text = "Обзор";
             this.btnSaveFile.UseVisualStyleBackColor = true;
             // 
             // labError
             // 
             this.labError.AutoSize = true;
-            this.labError.Location = new System.Drawing.Point(12, 167);
+            this.labError.Location = new System.Drawing.Point(12, 132);
+            this.labError.MaximumSize = new System.Drawing.Size(250, 0);
             this.labError.Name = "labError";
             this.labError.Size = new System.Drawing.Size(41, 15);
             this.labError.TabIndex = 10;
