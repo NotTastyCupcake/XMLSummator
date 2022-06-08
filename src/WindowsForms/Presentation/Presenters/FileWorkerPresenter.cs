@@ -121,12 +121,11 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Presenters
             {
                 
                 View.ShowError(ex.Message);
-                return;
             }
             finally
             {
-                Array.ForEach(streamReaders, sr => sr.Close());
-                fileStream.Close();
+                if (streamReaders != null) { Array.ForEach(streamReaders, sr => sr.Close()); }
+                if (fileStream != null) { fileStream.Close(); }                
             }
 
         }
