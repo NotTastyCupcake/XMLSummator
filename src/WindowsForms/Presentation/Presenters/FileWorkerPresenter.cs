@@ -76,15 +76,15 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Presenters
 
         private void CreateAmountFiles(string fileNameFirst, string fileNameSecond, string fileNameSave)
         {
-            if (string.IsNullOrWhiteSpace(fileNameSave))
-            {
-                View.ShowError("Путь для сохранения не выбран");
-                return;
-            }
-
             if (string.IsNullOrWhiteSpace(fileNameFirst) || string.IsNullOrWhiteSpace(fileNameSecond))
             {
                 View.ShowError("Файлы не выбраны");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(fileNameSave))
+            {
+                View.ShowError("Путь для сохранения не выбран");
                 return;
             }
 
@@ -114,7 +114,7 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Presenters
                 _service.DeserializeReportForms(streamReaders);
                 _service.AmountForms();
                 _service.CreateResultFile(fileStream);
-                View.ShowError("Файл успешно создан");
+                View.ShowSuccess("Файл успешно создан");
 
             }
             catch (Exception ex)

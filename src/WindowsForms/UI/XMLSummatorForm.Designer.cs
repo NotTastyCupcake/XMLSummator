@@ -38,7 +38,7 @@
             this.btnFileDialog = new System.Windows.Forms.Button();
             this.btnFileDialog2 = new System.Windows.Forms.Button();
             this.btnSaveFile = new System.Windows.Forms.Button();
-            this.labError = new System.Windows.Forms.Label();
+            this.labStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCreate
@@ -125,23 +125,23 @@
             this.btnSaveFile.Text = "Обзор";
             this.btnSaveFile.UseVisualStyleBackColor = true;
             // 
-            // labError
+            // labStatus
             // 
-            this.labError.AutoSize = true;
-            this.labError.Location = new System.Drawing.Point(12, 132);
-            this.labError.MaximumSize = new System.Drawing.Size(250, 0);
-            this.labError.Name = "labError";
-            this.labError.Size = new System.Drawing.Size(41, 15);
-            this.labError.TabIndex = 10;
-            this.labError.Text = "label2";
-            this.labError.Visible = false;
+            this.labStatus.AutoSize = true;
+            this.labStatus.Location = new System.Drawing.Point(12, 132);
+            this.labStatus.MaximumSize = new System.Drawing.Size(250, 0);
+            this.labStatus.Name = "labStatus";
+            this.labStatus.Size = new System.Drawing.Size(41, 15);
+            this.labStatus.TabIndex = 10;
+            this.labStatus.Text = "label2";
+            this.labStatus.Visible = false;
             // 
             // XMLSummatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 203);
-            this.Controls.Add(this.labError);
+            this.Controls.Add(this.labStatus);
             this.Controls.Add(this.btnSaveFile);
             this.Controls.Add(this.btnFileDialog2);
             this.Controls.Add(this.btnFileDialog);
@@ -152,7 +152,10 @@
             this.Controls.Add(this.txtFileNameFirst);
             this.Controls.Add(this.txtFileNameSecond);
             this.Controls.Add(this.btnCreate);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "XMLSummatorForm";
+            this.ShowIcon = false;
             this.Text = "Сложение XML";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -171,7 +174,7 @@
         private System.Windows.Forms.Button btnFileDialog;
         private System.Windows.Forms.Button btnFileDialog2;
         private System.Windows.Forms.Button btnSaveFile;
-        private System.Windows.Forms.Label labError;
+        private System.Windows.Forms.Label labStatus;
     }
 }
 

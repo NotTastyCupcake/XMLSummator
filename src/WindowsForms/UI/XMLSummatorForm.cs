@@ -46,14 +46,22 @@ namespace Metcom.XMLSummator.WindowsForms.UI
 
         public void ShowError(string errorMessage)
         {
-            labError.Visible = true;
-            labError.Text = errorMessage;
+            labStatus.Visible = true;
+            labStatus.ForeColor = Color.Red;
+            labStatus.Text = errorMessage;
+        }
+
+        public void ShowSuccess(string successMessage)
+        {
+            labStatus.Visible = true;
+            labStatus.ForeColor = Color.Green;
+            labStatus.Text = successMessage;
         }
 
         private void Invoke(Action action)
         {
             action?.Invoke();
         }
-
+        
     }
 }

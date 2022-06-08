@@ -21,5 +21,6 @@ namespace Metcom.XMLSummator.WindowsForms.Presentation.Views
         event Action FileDialogSave;
 
         void ShowError(string errorMessage);
+        void ShowSuccess(string successMessage);
     }
 }
