@@ -15,7 +15,11 @@ namespace Metcom.XMLSummator.ApplicationCore.Services
 {
     public class XmlWorkerService : IXmlWorkerService
     {
+        /// <summary>
+        /// Коллекция отчетов приведенных к классу
+        /// </summary>
         private readonly ICollection<ReportForm> ReportForms;
+        
         private readonly IValidatorFile _validatorFile;
         private readonly IAmountBalances _amountBalances;
         private ReportForm res;
@@ -27,6 +31,10 @@ namespace Metcom.XMLSummator.ApplicationCore.Services
             _amountBalances = new AmountBalance();
         }
 
+        /// <summary>
+        /// Дессириализация файлов XML
+        /// </summary>
+        /// <param name="streams"></param>
         public void DeserializeReportForms(ICollection<StreamReader> streams)
         {
             foreach(var stream in streams)
@@ -45,11 +53,18 @@ namespace Metcom.XMLSummator.ApplicationCore.Services
            
         }
 
+        /// <summary>
+        /// Сложение двух форм
+        /// </summary>
         public void AmountForms()
         {
             res = _amountBalances.AmountBalances(ReportForms);
         }
 
+        /// <summary>
+        /// Создание стрим файла
+        /// </summary>
+        /// <param name="resultFile">Куда сохранять</param>
         public void CreateResultFile(FileStream resultFile)
         {
             try
