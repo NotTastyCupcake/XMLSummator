@@ -24,7 +24,7 @@ namespace Metcom.XMLSummator.WindowsForms.UI
 
             var controller = new ApplicationController(new LightInjectAdapder())
                 .RegisterView<IFilesWorkerView, XMLSummatorForm>()
-                .RegisterService<IFileWorkerService, FileWorkerService>()
+                .RegisterService<IXmlWorkerService, XmlWorkerService>()
                 .RegisterInstance(new ApplicationContext());
 
             controller.Run<FileWorkerPresenter>();

@@ -13,14 +13,14 @@ using System.Xml.Serialization;
 
 namespace Metcom.XMLSummator.ApplicationCore.Services
 {
-    public class FileWorkerService : IFileWorkerService
+    public class XmlWorkerService : IXmlWorkerService
     {
         private readonly ICollection<ReportForm> ReportForms;
         private readonly IValidatorFile _validatorFile;
         private readonly IAmountBalances _amountBalances;
         private ReportForm res;
 
-        public FileWorkerService()
+        public XmlWorkerService()
         {
             ReportForms = new List<ReportForm>();
             _validatorFile = new ValidatorFile();
